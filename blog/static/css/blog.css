@@ -2,23 +2,30 @@ body {
     margin: 0;
     padding: 0;
 }
+
 :root {
-    --margin_main:10px;
+    --padding: 20px;
     --header: 20px;
 }
 
 ul {
-  list-style-type: none; /* Remove default list styles (bullets or numbers) */
-  padding: 0; /* Remove default padding */
-  display:flex;
-  flex-direction:row;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
 }
 
 /* Style the list items */
 li {
-  margin:0px; /* Add spacing between list items */
-  border-bottom: 1px solid white; /* Add a border between list items */
-  padding: 0px; /* Add padding to each list item */
+    margin: 0px 20px;
+    border-bottom: 1px solid white;
+}
+
+li:hover {
+    border-bottom: 1px solid navy;
+    color: navy;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
 }
 
 .page-header h1,
@@ -34,6 +41,8 @@ li {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    padding: 0px;
+    margin: 0px;
 }
 
 .headerBar {
@@ -43,22 +52,32 @@ li {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid white;
 }
 
 .headerBarLogo {
-    width:100px;
+    display: flex;
+    justify-content: start;
+    width: 200px;
     font-size: 15px !important;
-    padding: 20px;
+    padding: var(--padding);
+    font-family: 'Pacifico';
 }
 
 .headerBarCategory {
     display: flex;
     min-width: calc(100% - 200px);
     align-items: center;
-    justify-content:end;
+    justify-content: end;
+    color: white;
 }
 
-.contentBox{
+
+
+
+
+.contentBox {
     width: 100%;
     height: calc(100vh - 50px);
     display: flex;
@@ -66,19 +85,81 @@ li {
     background-color: black;
 }
 
-.contentBoxCategory{
+.contentBoxCategory {
     width: 100%;
     height: 20px;
-    padding:20px;
-    background-color: #005B41;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    background-color: navy;
 }
 
-.contentBoxData{
+.contentBoxCategoryPanel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+
+.contentBoxCategoryPanel img {
+    width: 25px;
+    height: 25px;
+    margin: 10px 0px;
+}
+
+.contentBoxData {
     display: flex;
     flex-direction: column;
     overflow: hidden;
     overflow-y: scroll;
     background-color: wheat;
+    width: 100%;
+    height: 100vh;
+    padding: var(--padding)
+}
+
+.dataBlock {
+    width: 70%;
+    height: 25vh;
+    display: flex;
+    min-height: 20vh;
+    flex-direction: column;
+    border: 2px solid white;
+    margin: 20px;
+}
+
+.dataBlockBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 25px;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.dataBlockTitle {}
+
+.dataBlockTitle a {
+    font-size: large;
+    color: rebeccapurple;
+}
+
+.dataBlockUser {}
+
+.dataBlockDescription {
+    min-height: calc(100% - 50px);
+    padding: 0px 10px;
+}
+
+
+.dataBlockDate {
+    height: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
 }
 
 
@@ -87,4 +168,64 @@ h2,
 h3,
 h4 {
     font-family: 'Pacifico';
+}
+
+
+
+
+
+
+.windowAdd {
+    min-width: 500px;
+    min-height: 200px;
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    /* Ukryj element na początku */
+    background-color: #ffffff;
+    width: 70%;
+    height: auto;
+}
+
+.windowBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: var(--padding);
+    padding-bottom: 0px;
+}
+
+.windowAddCategory {}
+
+.windowAddTitle {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.windowAddDescription {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.windowAddError {
+    color: red;
+}
+
+.windowAddButtonBar {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: end;
 }
