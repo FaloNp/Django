@@ -1,93 +1,19 @@
-{% load static %}
-<html>
-    <head>
-        <title>FaloNp blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/strap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class="container">
-            <div class="headerBar">
-                <div class="headerBarLogo">
-                    <a href="/">FaloNp blog</a>
-                </div>
-                <div class="headerBarCategory">
-                    <ul>
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                        <li>Item 4</li>
-                        <li>Item 5</li>
-                    </ul>
-                </div>
+<!-- post_list.html -->
+{% extends 'blog/base.html' %}
+{% block post_list %}
+    <h1>Lista Postów</h1>
+    {% for post in posts %}
+        <div class="dataBlock">
+            <div class="dataBlockBar">
+                <div class="dataBlockTitle">{{ post.title }}</div>
+                <div class="dataBlockUser">{{ post.author }}</div>
             </div>
-
-            <div class="contentBox">
-                <div class="contentBoxCategory">
-                    <div>Category: LOLO</div>
-                    <div class="contentBoxCategoryPanel">
-                        <img src="{% static 'css/foto/panel/pen.png' %}" onclick="toggleAddPost()">
-                        <img src="{% static 'css/foto/panel/sort.png' %}">
-                    </div>
-                </div>
-                <div class="contentBoxData">
-                    <h1>Lista Postów</h1>
-                    {% for post in posts %}
-                    <div class="dataBlock">
-                        <div class="dataBlockBar">
-                            <div class="dataBlockTitle"><a href="">{{ post.title }}</a></div>
-                            <div class="dataBlockUser">{{post.author}}</div>
-                        </div>
-                        <div class="dataBlockDescription">
-                            <p>{{ post.text|linebreaksbr }}</p>
-                        </div>
-                        <div class="dataBlockDate">
-                        published: {{ post.published_date }}
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
+            <div class="dataBlockDescription">
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+            <div class="dataBlockDate">
+                published: {{ post.published_date }}
             </div>
         </div>
-
-
-        <div class="windowAdd">
-            <div class=" windowBox">
-                <h2>Dodaj nowy post</h2>
-                <form id="postForm" onsubmit="publishPost(event)">
-                    <div class="windowAddTitle">
-                        <label for="postTitle">Tytuł:</label>
-                        <input type="text" id="postTitle" name="title" required>
-                    </div>
-                    <div class="windowAddDescription">
-                        <label for="postContent">Treść:</label>
-                        <textarea id="postContent" name="content" required></textarea>
-                    </div>
-                    <div class="windowAddError"></div>
-                    <div class="windowAddButtonBar">
-                        <input type="submit" value="Publikuj">
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-        </div>
-
-        <script>
-            function toggleAddPost() {
-                var windowAddElement = document.getElementsByClassName('windowAdd')[0];
-                console.log("1");
-                if (windowAddElement) {
-                    windowAddElement.style.display = (windowAddElement.style.display === 'none' || windowAddElement.style.display === '') ? 'block' : 'none';
-                }
-            }
-
-            function publishPost(){
-
-                console.log("dodano!")
-            }
-        </script>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
