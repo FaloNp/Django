@@ -41,8 +41,9 @@ li:hover {
     flex-direction: row;
     min-width: 100%;
     margin: 10px 0px;
+    padding:0px 10px;
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;
 }
 
 .container {
@@ -144,27 +145,34 @@ li:hover {
     justify-content: space-between;
     height: 25px;
     align-items: center;
-    padding: 0px 20px;
+    padding:10px;
+    margin:10px 0px;
 }
 
-.dataBlockTitle {}
-
-.dataBlockTitle a {
+.dataBlockTitle {
     font-size: large;
     color: rebeccapurple;
+    text-transform: uppercase;
+}
+
+.dataBlockTitle a {
 }
 
 .dataBlockUser {}
 
 .dataBlockDescription {
-    min-height: calc(100% - 50px);
+    min-height: calc(100% - 100px);
     padding: 0px 10px;
 }
 
-
+.dataCategory{
+    height: 25px;
+    width: 50%;
+    display: flex;
+}
 .dataBlockDate {
     height: 25px;
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: end;
@@ -179,64 +187,29 @@ h4 {
 }
 
 
-
-
-
-
-.windowAdd {
-    min-width: 500px;
-    min-height: 200px;
-    position: fixed;
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-    /* Ukryj element na początku */
-    background-color: #ffffff;
-    width: 70%;
-    height: auto;
+.buttonImage{
+    all: initial;
+    background-color: transparent;
+    border: none;
+}
+.buttonImage img{
+    width:20px;
+    height:20px;
+}
+.returnButton{
+    position:fixed;
+    top: 0;
+    right: 0;
+    margin:20px;
 }
 
-.windowBox {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: var(--padding);
-    padding-bottom: 0px;
-}
 
-.windowAddCategory {}
-
-.windowAddTitle {
-    display: flex;
-    flex-direction: row;
-    width: 50%;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0px;
-}
-
-.windowAddDescription {
-    display: flex;
-    flex-direction: row;
-    width: 50%;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0px;
-}
 
 .windowAddError {
     color: red;
 }
 
-.windowAddButtonBar {
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: end;
-}
+
 
 
 

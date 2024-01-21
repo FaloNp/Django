@@ -36,7 +36,7 @@
             <div class="ReturnButton">
                 <form method="post" action="{% url 'post_list' %}">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">RETURN</button>
+                    <button type="submit" class="btn btn-primary buttonImage"><img src="{% static 'css/foto/panel/back.png' %}"></button>
                 </form>
             </div>
             {% if error_message %}

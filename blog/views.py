@@ -14,17 +14,29 @@ def post_list(request):
 def category_list(request):
     categoryList = Post.CATEGORY_LIST
     return render(request, 'blog/category_list.html', {'category_list': categoryList})
+
+
+def search(request):
+    if request.method == 'POST':
+        searched_phrase = request.POST.get('title', '')
+        # Wyszukaj posty zawierające frazę w tytule
+        posts = Post.objects.filter(title__icontains=searched_phrase)
+        return render(request, 'blog/post_list.html', {'posts': posts, 'searched_phrase': searched_phrase})
+    return render(request, 'blog/search.html')
+def sort(request):
+    return render(request, 'blog/sort.html',)
+
 def add_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.publish()
+            post.save()
             return redirect('post_list')
     else:
         form = PostForm()
-    return render(request, 'blog/add_post.html', {'form': form})
+    return render(request, 'blog/add.html', {'form': form})
 
 
 

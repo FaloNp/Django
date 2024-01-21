@@ -11,8 +11,13 @@
             <div class="dataBlockDescription">
                 <p>{{ post.text|linebreaksbr }}</p>
             </div>
-            <div class="dataBlockDate">
-                published: {{ post.published_date }}
+            <div class="dataBlockBar">
+                <div class="dataCategory">
+                    {{ post.get_category_display }}
+                </div>
+                <div class="dataBlockDate">
+                    published: {{ post.published_date }}
+                </div>
             </div>
         </div>
     {% endfor %}

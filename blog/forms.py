@@ -5,7 +5,9 @@ from .models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'text',)
+        fields = ('category', 'title', 'text',)
+    category = forms.ChoiceField(choices=Post.CATEGORY_LIST, required=True,
+                                     widget=forms.Select(attrs={'class': 'form-control'}))
 
 class RegistrationForm(forms.Form):
     username = forms.CharField()
