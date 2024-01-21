@@ -17,13 +17,7 @@
                 <a href="/">FaloNp blog</a>
             </div>
             <div class="headerBarCategory">
-                <ul>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
-                    <li>Item 5</li>
-                </ul>
+                {% block category_list %}{% endblock %}
             </div>
         </div>
 
@@ -31,8 +25,20 @@
             <div class="contentBoxCategory">
                 <div>Category: LOLO</div>
                 <div class="contentBoxCategoryPanel">
-                    <img src="{% static 'css/foto/panel/pen.png' %}" onclick="toggleAddPost()">
-                    <img src="{% static 'css/foto/panel/sort.png' %}">
+                    {% if user.is_authenticated %}
+                        <div class="contentBoxCategoryPanelElement">{{ user.username }}</div>
+                        <div class="contentBoxCategoryPanelElement"><img src="{% static 'css/foto/panel/pen.png' %}" onclick="toggleAddPost()"></div>
+                        <div class="contentBoxCategoryPanelElement"><img src="{% static 'css/foto/panel/sort.png' %}"></div>
+                        <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">LOG OUT</button>
+                        </form>
+                    {% else %}
+                        <div class="contentBoxCategoryPanelElement"><img src="{% static 'css/foto/panel/sort.png' %}"></div>
+                        <form action="{% url 'login' %}">
+                            <button type="submit" class="btn btn-primary">LOG IN</button>
+                        </form>
+                    {{% endif %}
                 </div>
             </div>
             <div class="contentBoxData">

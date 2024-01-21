@@ -4,11 +4,20 @@ from django.utils import timezone
 
 
 class Post(models.Model):
+    CATEGORY_LIST = [
+        ('ITEM1', 'Tech & IT'),
+        ('ITEM2', 'Hobbies & Fun'),
+        ('ITEM3', 'Sports & Rec'),
+        ('ITEM4', 'Cooking & Food'),
+        ('ITEM5', 'Art & Culture'),
+    ]
+    CATEGORY_DEFAULT = 'ITEM1'
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    category = models.CharField(max_length=50, default=CATEGORY_DEFAULT, choices=CATEGORY_LIST)
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(
-            default=timezone.now)
+        default=timezone.now)
     published_date = models.DateTimeField(default=timezone.now)
 
     def publish(self):

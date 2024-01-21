@@ -1,0 +1,10 @@
+<!-- category_list.html -->
+{% extends 'blog/base.html' %}
+
+{% block category_list %}
+    <ul>
+        {% for item in Post.CATEGORY_LIST %}
+            <li>{{ item.1 }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
