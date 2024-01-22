@@ -19,7 +19,9 @@
                     published: {{ post.published_date }}
                 </div>
             </div>
+            <div class="dataBlockBar">
+                <a href="{% url 'post_detail' pk=post.pk %}">Zobacz komentarze</a>
+            </div>
         </div>
     {% endfor %}
 {% endblock %}
-

@@ -5,11 +5,12 @@ from .views import *
 
 urlpatterns = [
     path('', views.post_list, name='post_list'),
-    path('', views.category_list, name='post_category'),
     path('search/', search, name='search'),
     path('sort/', sort, name='sort'),
     path('add/', add_post, name='add'),
     path('accounts/login/', user_login, name='login'),  # Użyj własnego widoku logowania
     path('accounts/', include('django.contrib.auth.urls')),
     path('register/', register, name='register'),
+    path('post/<int:pk>/comment/', add_comment_to_post, name='add_comment_to_post'),
+    path('post/<int:pk>/', post_detail, name='post_detail'),
 ]

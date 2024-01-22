@@ -1,0 +1,39 @@
+<!-- post_detail.html -->
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaloNp blog</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/strap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="formBox commentBox">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <p>Category: {{ post.get_category_display }}</p>
+            <p>Published: {{ post.published_date }}</p>
+
+            <!-- Formularz do dodawania komentarzy -->
+            <h2>Dodaj komentarz</h2>
+            <form method="post" action="{% url 'add_comment_to_post' pk=post.pk %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Dodaj komentarz</button>
+            </form>
+
+            <!-- Wyświetlanie istniejących komentarzy -->
+            {% for comment in post.comments.all %}
+                <div class="comment">
+                    <p>{{ comment.author }} dnia {{ comment.created_date }}</p>
+                    <p>{{ comment.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

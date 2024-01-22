@@ -1,6 +1,6 @@
 # blog/forms.py
 from django import forms
-from .models import Post
+from .models import *
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -8,6 +8,11 @@ class PostForm(forms.ModelForm):
         fields = ('category', 'title', 'text',)
     category = forms.ChoiceField(choices=Post.CATEGORY_LIST, required=True,
                                      widget=forms.Select(attrs={'class': 'form-control'}))
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
 
 class RegistrationForm(forms.Form):
     username = forms.CharField()

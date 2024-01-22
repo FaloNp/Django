@@ -6,6 +6,8 @@ body {
 :root {
     --padding: 20px;
     --header: 20px;
+    --theme_main_color:#1C3329;
+    --theme_secondary_color:#216E4E;
 }
 
 ul {
@@ -50,26 +52,36 @@ li:hover {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     padding: 0px;
     margin: 0px;
-    background-color: wheat;
+
+    background-image: url('foto/panel/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #ffffff;
 }
 
 .headerBar {
     background-color: #005B41;
-    width: 100%;
+    width: 90%;
     height: 50px;
+    max-width:1000px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border-bottom: 2px solid white;
+    padding: 20px;
 }
 
 .headerBarLogo. {
     display: flex;
     justify-content: start;
-    width: 200px;
+    min-width: 200px;
     font-size: 15px !important;
     padding: var(--padding);
     font-family: 'Pacifico';
@@ -84,31 +96,23 @@ li:hover {
 }
 
 .contentBox {
-    width: 100%;
+    width: 90%;
     height: calc(100vh - 50px);
+    max-width:1000px;
     display: flex;
     flex-direction: column;
-    background-color: black;
-}
-
-.contentBoxCategory {
-    width: 100%;
-    min-height: 20px;
-    display: flex;
-    align-items: center;
-    padding: var(--padding);
-    background-color: navy;
+    background-color: var(--theme_main_color);
 }
 
 .contentBoxCategoryPanel{
-    width: 100%;
+    padding:10px 0px;
     display: flex;
     flex-direction: row;
     justify-content: end;
     align-items: center !important;
 }
 .contentBoxCategoryPanelElement{
-    margin: 0px 20px;
+    margin: 20px;
     padding: 0px;
 }
 .contentBoxCategoryPanel img {
@@ -122,20 +126,21 @@ li:hover {
     flex-direction: column;
     overflow: hidden;
     overflow-y: scroll;
-    background-color: wheat;
+    background-color: transparent;
     width: 100%;
     height: 100vh;
     padding: var(--padding)
 }
 
 .dataBlock {
-    width: 70%;
-    height: 25vh;
+    width: 90%;
+    height: auto;
     display: flex;
-    min-height: 20vh;
+    min-height: 50vh;
     flex-direction: column;
     border: 2px solid white;
-    margin: 20px;
+    margin: 20px 0px;
+    background-color:var(--theme_secondary_color);
 }
 
 .dataBlockBar {
@@ -144,6 +149,7 @@ li:hover {
     flex-direction: row;
     justify-content: space-between;
     height: 25px;
+    max-height:25px;
     align-items: center;
     padding:10px;
     margin:10px 0px;
@@ -151,17 +157,16 @@ li:hover {
 
 .dataBlockTitle {
     font-size: large;
-    color: rebeccapurple;
     text-transform: uppercase;
 }
 
-.dataBlockTitle a {
-}
 
 .dataBlockUser {}
 
 .dataBlockDescription {
-    min-height: calc(100% - 100px);
+    background-color:var(--theme_main_color);
+    overflow-y:scroll;
+    min-height: calc(100% - 120px);
     padding: 0px 10px;
 }
 
@@ -196,6 +201,9 @@ h4 {
     width:20px;
     height:20px;
 }
+.buttonImage:hover{
+    cursor:pointer;
+}
 .returnButton{
     position:fixed;
     top: 0;
@@ -214,19 +222,21 @@ h4 {
 
 
 .formBox {
-    min-width: 500px;
-    min-height: 200px;
     position: fixed;
-    background-color: #ffffff;
+    background-color: var(--theme_main_color);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70%;
-    height: 50vh;
+    height: 70vh;
     overflow: hidden;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 20px;
+}
+
+.commentBox{
+    height:90vh;
 }
