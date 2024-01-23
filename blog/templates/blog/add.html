@@ -28,7 +28,9 @@
                     <label for="postContent">Treść: </label>
                     <textarea type="text" id="postContent" name="text" class="form-control" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Add</button>
+                {% if user.is_authenticated %}
+                    <button type="submit" class="btn btn-primary">Add</button>
+                {% endif %}
             </form>
             <div class="ReturnButton">
                 <form method="post" action="{% url 'post_list' %}">

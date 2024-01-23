@@ -13,26 +13,38 @@
 <body>
     <div class="container">
         <div class="formBox commentBox">
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.text|linebreaksbr }}</p>
+            <div class="dataBlockTitle">{{ post.title }}</div>
+            <div class="dataBlockDescription commentDescription"><p>{{ post.text|linebreaksbr }}</p></div>
             <p>Category: {{ post.get_category_display }}</p>
             <p>Published: {{ post.published_date }}</p>
 
+            <!-- Wyświetlanie istniejących komentarzy -->
+            <div class="dataBlockTitle">komentarze</div>
+            {% for comment in post.comments.all %}
+                <div class="comment commentRow">
+                    <p>{{ comment.text|linebreaksbr }}</p>
+                    <div class="commentDate"><p>Author: {{ comment.author }} dnia {{ comment.created_date }}</p></div>
+                </div>
+            {% endfor %}
+
             <!-- Formularz do dodawania komentarzy -->
+            {% if user.is_authenticated %}
             <h2>Dodaj komentarz</h2>
             <form method="post" action="{% url 'add_comment_to_post' pk=post.pk %}">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Dodaj komentarz</button>
+                    <div class="form-group">
+                        <label for="postContent">Treść: </label>
+                        <textarea type="text" id="postContent" name="text" class="form-control" required></textarea>
+                    </div>
+                <button type="submit" class="btn btn-primary">Add</button>
             </form>
-
-            <!-- Wyświetlanie istniejących komentarzy -->
-            {% for comment in post.comments.all %}
-                <div class="comment">
-                    <p>{{ comment.author }} dnia {{ comment.created_date }}</p>
-                    <p>{{ comment.text|linebreaksbr }}</p>
-                </div>
-            {% endfor %}
+            {% endif %}
+            <div class="ReturnButton">
+                <form method="post" action="{% url 'post_list' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary buttonImage"><img src="{% static 'css/foto/panel/back.png' %}"></button>
+                </form>
+            </div>
         </div>
     </div>
 </body>

@@ -16,7 +16,7 @@
             <form method="post" action="{% url 'search' %}">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="searched_phrase">Wyszukaj: </label>
+                    <label for="searched_phrase">SEARCH</label>
                     <div class="row">
                         <input type="text" id="searched_phrase" name="title" class="form-control" required>
                         <button type="submit" class="btn btn-primary buttonImage"><img src="{% static 'css/foto/panel/search.png' %}"></button>

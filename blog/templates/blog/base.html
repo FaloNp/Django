@@ -24,20 +24,38 @@
                         <form action="{% url 'add' %}">
                             <div class="contentBoxCategoryPanelElement"><button class="buttonImage"><img src="{% static 'css/foto/panel/pen.png' %}"></button></div>
                         </form>
-                        <form action="{% url 'search' %}">
-                            <div class="contentBoxCategoryPanelElement"><button class="buttonImage"><img src="{% static 'css/foto/panel/search.png' %}"></button></div>
-                        </form>
-                        <form action="{% url 'sort' %}">
-                            <div class="contentBoxCategoryPanelElement"><button class="buttonImage"><img src="{% static 'css/foto/panel/sort.png' %}"></button></div>
-                        </form>
+                        <div class="contentBoxCategoryPanelElement">
+                            <form action="{% url 'search' %}">
+                                <button class="buttonImage"><img src="{% static 'css/foto/panel/search.png' %}"></button>
+                            </form>
+                        </div>
+                        <div class="contentBoxCategoryPanelElement sort_drop">
+                            <button class="buttonImage"><img src="{% static 'css/foto/panel/sort.png' %}"></button>
+                            <div class="drop_content">
+                                <div class="drop_row">ORDER BY</div>
+                                <div class="drop_row"><a href="?sort_by=published_date">DATE</a></div>
+                                <div class="drop_row"><a href="?sort_by=-published_date">-DATE</a></div>
+                                <div class="drop_row"><a href="?sort_by=author">AUTHOR</a></div>
+                                <div class="drop_row"><a href="?sort_by=category">CATEGORY</a></div>
+                                <div class="drop_row"><a href="?sort_by=title">ALPHABETICALLY</a></div>
+                            </div>
+                        </div>
                         <form action="{% url 'logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">LOG OUT</button>
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">LOG OUT</button>
                         </form>
                     {% else %}
-                        <form action="{% url 'sort' %}">
-                            <div class="contentBoxCategoryPanelElement"><button class="buttonImage"><img src="{% static 'css/foto/panel/sort.png' %}"></button></div>
-                        </form>
+                        <div class="contentBoxCategoryPanelElement sort_drop">
+                            <button class="buttonImage"><img src="{% static 'css/foto/panel/sort.png' %}"></button>
+                            <div class="drop_content">
+                                <div class="drop_row">ORDER BY</div>
+                                <div class="drop_row"><a href="?sort_by=published_date">DATE</a></div>
+                                <div class="drop_row"><a href="?sort_by=-published_date">-DATE</a></div>
+                                <div class="drop_row"><a href="?sort_by=author">AUTHOR</a></div>
+                                <div class="drop_row"><a href="?sort_by=category">CATEGORY</a></div>
+                                <div class="drop_row"><a href="?sort_by=title">ALPHABETICALLY</a></div>
+                            </div>
+                        </div>
                         <form action="{% url 'search' %}">
                             <div class="contentBoxCategoryPanelElement"><button class="buttonImage"><img src="{% static 'css/foto/panel/search.png' %}"></button></div>
                         </form>
