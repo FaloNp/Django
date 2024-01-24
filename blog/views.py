@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from django.contrib.auth import login, authenticate
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def post_list(request):
@@ -23,7 +23,7 @@ def post_detail(request, pk):
     else:
         form = CommentForm()
     return render(request, 'blog/post_detail.html', {'post': post, 'form': form})
-
+@login_required(login_url='/')
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
@@ -50,7 +50,7 @@ def search(request):
     return render(request, 'blog/search.html')
 def sort(request):
     return render(request, 'blog/sort.html',)
-
+@login_required(login_url='/')
 def add_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
